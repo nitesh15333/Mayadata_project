@@ -1,0 +1,92 @@
+<div class="heading">
+   My Meetings
+</div>
+<div class="filter">
+  <i class="material-icons" style=" position: absolute;
+  top: 40%;
+  left: 10%;" >search</i> <input type="text" style="padding-left:25px" [(ngModel)]="search.text" (ngModelChange)="textChange(search.text)">
+  <input type="date" [(ngModel)]="search.fromdate">
+  <input type="date" [(ngModel)]="search.todate" (ngModelChange)="toDateChaged(search.todate)">
+</div>
+<div class="dataarea">
+ <table >
+   <thead >
+     <th>
+        S1 No
+     </th>
+     <th>
+       Meeting Name
+    </th>
+    <th>
+      No Of People attendding
+    </th>
+    <th>
+       Date
+    </th>
+    <th>
+       Start Time
+    </th>
+    <th>
+       End Time
+    </th>
+    <th>
+     Actions
+    </th></thead>
+    <tbody *ngIf="tableData&&tableData.length>0">
+      <tr *ngFor="let data of tableData; let i=index">
+           <td>
+             {{i+1}}
+           </td>
+           <td>
+             {{data.meetingName}}
+          </td>
+
+          <td>
+            {{data.noOfattendee}}
+          </td>
+          <td>
+             {{data.date}}
+          </td>
+          <td>
+            {{data.starttime}}
+          </td>
+          <td>
+            {{data.endtime}}
+          </td>
+          <td>
+            <!-- <button (click)="delete(data)"> -->
+              <i class="material-icons" style="color: #CA2C2C; cursor: pointer;"(click)="delete(data)" >delete</i>
+            <!-- </button>  -->
+             <!-- Delete</button> -->
+          </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>
+
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="meeting.meetingName">
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="meeting.noOfattendee">
+        </td>
+        <td>
+          <input type="date" [(ngModel)]="meeting.date">
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="meeting.starttime">
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="meeting.endtime">
+        </td>
+        
+        <td>
+          <button class="addBtn" (click)="add(meeting)"> Add</button>
+        </td>
+      </tr>
+    </tbody>
+ </table>
+
+</div>
